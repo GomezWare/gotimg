@@ -2,11 +2,20 @@ import type { APIRoute } from "astro";
 import { generateSquare } from "@utils/generateSquare";
 import { validateSize } from "@utils/validations/sizeCheck";
 
-export const GET: APIRoute = ({ params }) => {
+/**
+ * Apiroute for generate squares
+ *
+ * @param {params} { params }
+ * @return {Response}
+ */
+const GET: APIRoute = ({ params }) => {
+  // Validate width get by params
   if (validateSize(params.width)) {
+    // Return bad request if validation fails
     return new Response(null, { status: 400 });
   }
 
+  // Return image via a Response
   return new Response(generateSquare(Number(params.width)), {
     headers: { "Content-Type": "image/jpeg" },
   });

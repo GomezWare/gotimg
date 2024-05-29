@@ -1,3 +1,4 @@
+// Available html colors
 const htmlColors = [
   "aliceblue",
   "antiquewhite",
@@ -142,8 +143,15 @@ const htmlColors = [
   "yellowgreen",
 ];
 
+// Regex to chexk if is a string is a hex color
 const hexRegex = /^(?:[0-9a-fA-F]{3}){1,2}$/;
 
+/**
+ * This check if String is a valid htmlcolor or a hex color string
+ *
+ * @param {String} color
+ * @return {boolean}
+ */
 const validateColor = (color) => {
   if (!(htmlColors.includes(color) || hexRegex.test(color))) {
     return true;
@@ -152,6 +160,12 @@ const validateColor = (color) => {
   return false;
 };
 
+/**
+ * Return a formated hex color strings or a htmlcolors
+ *
+ * @param {String} color
+ * @return {String}
+ */
 const getColor = (color) => {
   if (htmlColors.includes(color)) {
     return color;

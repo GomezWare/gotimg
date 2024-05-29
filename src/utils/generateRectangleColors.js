@@ -1,5 +1,13 @@
 import { createCanvas } from "canvas";
 
+/**
+ * Function to generate a custom size image and custom color via canvas library and return a image buffer
+ *
+ * @param {Number} width
+ * @param {Number} height
+ * @param {String} color
+ * @return {Buffer}
+ */
 const generateRectangleColors = (width, height, color) => {
   const canvas = createCanvas(width, height);
   const ctx = canvas.getContext("2d");
@@ -18,6 +26,7 @@ const generateRectangleColors = (width, height, color) => {
   ctx.strokeText(`${width} x ${height}`, width / 2, height / 2);
   ctx.fillText(`${width} x ${height}`, width / 2, height / 2);
 
+  // Return generated image buffer
   return canvas.toBuffer("image/jpeg");
 };
 

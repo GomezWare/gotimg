@@ -1,10 +1,16 @@
 import { createCanvas } from "canvas";
 
+/**
+ * Function to generate a square via canvas library and return a image buffer
+ *
+ * @param {Number} width
+ * @return {Buffer}
+ */
 const generateSquare = (width) => {
   const canvas = createCanvas(width, width);
   const ctx = canvas.getContext("2d");
 
-  // Gradient
+  // Gradient (If you have a better gradient send a pull request)
   const gradient = ctx.createLinearGradient(0, 0, width, width);
   gradient.addColorStop(0, "magenta");
   gradient.addColorStop(0.5, "cyan");
@@ -24,6 +30,7 @@ const generateSquare = (width) => {
   ctx.strokeText(`${width} x ${width}`, width / 2, width / 2);
   ctx.fillText(`${width} x ${width}`, width / 2, width / 2);
 
+  // Return generated image buffer
   return canvas.toBuffer("image/jpeg");
 };
 

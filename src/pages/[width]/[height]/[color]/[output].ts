@@ -4,15 +4,25 @@ import { validateSize } from "@utils/validations/sizeCheck";
 import { validateColor } from "@utils/validations/colorCheck";
 import { validateOutput } from "@utils/validations/outputCheck";
 
+/**
+ * Apiroute for generate custom size
+ * With colors and custom format
+ *
+ * @param {params} { params }
+ * @return {Response}
+ */
 export const GET: APIRoute = ({ params }) => {
+  // Validate width|height|color|format get by params
   if (
     validateSize(params.width) ||
     validateSize(params.height) ||
     validateColor(params.color) ||
     validateOutput(params.output)
   ) {
+    // Return bad request if validation fails
     return new Response(null, { status: 400 });
   }
+  // Return image via a Response
   return new Response(
     generateRectangleColorsOutput(
       Number(params.width),
