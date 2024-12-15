@@ -15,7 +15,7 @@ export const GET: APIRoute = ({ params }) => {
   if (
     validateSize(Number(params.width)) ||
     validateSize(Number(params.height)) ||
-    validateColor(Number(params.color))
+    validateColor(String(params.color))
   ) {
     // Return bad request if validation fails
     return new Response(null, { status: 400 });
@@ -25,7 +25,7 @@ export const GET: APIRoute = ({ params }) => {
     generateRectangleColors(
       Number(params.width),
       Number(params.height),
-      getColor(Number(params.color))
+      getColor(String(params.color))
     ),
     {
       headers: { "Content-Type": "image/jpeg" },
