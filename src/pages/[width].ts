@@ -8,9 +8,9 @@ import { validateSize } from "@utils/validations/sizeCheck";
  * @param {params} { params }
  * @return {Response}
  */
-const GET: APIRoute = ({ params }) => {
+export const GET: APIRoute = ({ params }) => {
   // Validate width get by params
-  if (validateSize(params.width)) {
+  if (validateSize(Number(params.width))) {
     // Return bad request if validation fails
     return new Response(null, { status: 400 });
   }

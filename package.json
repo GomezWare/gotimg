@@ -7,13 +7,14 @@
     "start": "astro dev",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "server": "node dist/entry.mjs"
   },
   "dependencies": {
-    "@astrojs/check": "^0.7.0",
-    "@astrojs/node": "^8.2.5",
-    "astro": "^4.9.2",
+    "@astrojs/check": "^0.9.4",
+    "@astrojs/node": "^9.0.0",
+    "astro": "^5.0.5",
     "canvas": "^2.11.2",
-    "typescript": "^5.4.5"
+    "typescript": "^5.7.2"
   }
 }

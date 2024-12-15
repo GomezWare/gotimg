@@ -14,10 +14,10 @@ import { validateOutput } from "@utils/validations/outputCheck";
 export const GET: APIRoute = ({ params }) => {
   // Validate width|height|color|format get by params
   if (
-    validateSize(params.width) ||
-    validateSize(params.height) ||
-    validateColor(params.color) ||
-    validateOutput(params.output)
+    validateSize(Number(params.width)) ||
+    validateSize(Number(params.height)) ||
+    validateColor(String(params.color)) ||
+    validateOutput(String(params.output))
   ) {
     // Return bad request if validation fails
     return new Response(null, { status: 400 });

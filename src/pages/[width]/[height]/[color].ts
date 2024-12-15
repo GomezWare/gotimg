@@ -13,9 +13,9 @@ import { getColor, validateColor } from "@utils/validations/colorCheck";
 export const GET: APIRoute = ({ params }) => {
   // Validate width|height|color get by params
   if (
-    validateSize(params.width) ||
-    validateSize(params.height) ||
-    validateColor(params.color)
+    validateSize(Number(params.width)) ||
+    validateSize(Number(params.height)) ||
+    validateColor(Number(params.color))
   ) {
     // Return bad request if validation fails
     return new Response(null, { status: 400 });
@@ -25,7 +25,7 @@ export const GET: APIRoute = ({ params }) => {
     generateRectangleColors(
       Number(params.width),
       Number(params.height),
-      getColor(params.color)
+      getColor(Number(params.color))
     ),
     {
       headers: { "Content-Type": "image/jpeg" },
